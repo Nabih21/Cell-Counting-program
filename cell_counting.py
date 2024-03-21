@@ -12,8 +12,7 @@ import numpy as np
 
 
     
-# This function is provided to you. You will need to call it.
-# You should not need to modify it.
+
 def seedfill(im, seed_row, seed_col, fill_color,bckg):
     """ Runs the seedfill algorithm
     Args:
@@ -53,7 +52,7 @@ def seedfill(im, seed_row, seed_col, fill_color,bckg):
     return size
 
 
-# QUESTION 4
+
 def fill_cells(edge_image):
     """ Fills each enclosed region with a different grayscale value
     Args:
@@ -75,10 +74,10 @@ def fill_cells(edge_image):
                 
     
     
-    # return None # REMOVE THIS LINE WHEN YOU'RE DONE
+    
 
 
-# QUESTION 5
+
 def classify_cells(original_image, labeled_image, 
                    min_size=1000, max_size=5000, 
                    infected_grayscale=0.5, min_infected_percentage=0.02):
@@ -126,10 +125,10 @@ def classify_cells(original_image, labeled_image,
                    
                         
     
-    return (infected, not_infected) # REMOVE THIS LINE WHEN YOU'RE DONE
+    return (infected, not_infected) 
 
 
-# QUESTION 6
+
 def annotate_image(color_image, labeled_image, infected, not_infected):
     """ Annotates the cells in the image, using green for uninfected cells
         and red for infected cells.
@@ -156,13 +155,12 @@ def annotate_image(color_image, labeled_image, infected, not_infected):
                             color_image = color_image.convert('RGB')
                             color_image.putpixel((c, r), (0, 255, 0))                               
     
-    return color_image # REMOVE THIS WHEN YOU'RE DONE
+    return color_image 
 
 
-if __name__ == "__main__":  # do not remove this line   
+if __name__ == "__main__":  
 
-
-    # QUESTION 1: WRITE YOUR CODE HERE
+    
    # image = io.imread("malaria-1.jpeg")
     # image = io.imread("malaria-1-small.jpeg")
     #image = io.imread("/Users/nabihelhelou/Desktop/Fall 2023/internship/comp204/assignment_5_comp/malaria-1.jpeg")
@@ -185,7 +183,7 @@ if __name__ == "__main__":  # do not remove this line
     #io.imsave("Q1_Sobel.jpg", sobel_mag)
 
 
-    # QUESTION 2: WRITE YOUR CODE HERE
+    
     T= 0.05
     for r in range(len(sobel_mag)):
         for c in range(len(sobel_mag[0])):
@@ -203,7 +201,6 @@ if __name__ == "__main__":  # do not remove this line
     image.save("Q2_Sobel_T_0.05.jpg") 
         
 
-    # QUESTION 3: WRITE YOUR CODE HERE
     sobel_mag_copy = sobel_mag.copy()
     n_row, n_col = sobel_mag_copy.shape
     for r in range(len(sobel_mag)):
@@ -224,7 +221,7 @@ if __name__ == "__main__":  # do not remove this line
     #io.imsave("Q3_Sobel_T0.05_clean.jpg", sobel_mag_copy)
             
 
-    # QUESTION 4: WRITE YOUR CODE CALLING THE FILL_CELLS FUNCTION HERE
+    
     # breakpoint()
     edge_image = sobel_mag_copy.copy()
  
@@ -237,11 +234,11 @@ if __name__ == "__main__":  # do not remove this line
     image.save("Q4_Sobel_T_0.05_clean_filled.jpg")
    # io.imsave("Q4_Sobel_T_0.05_clean_filled.jpg", edge_image)
     
-    # QUESTION 5: WRITE YOUR CODE CALLING THE CLASSIFY_CELLS FUNCTION HERE
+    
     cells_tuple = classify_cells(gray_image, edge_image)
     
 
-    # QUESTION 6: WRITE YOUR CODE CALLING THE ANNOTATE_IMAGE FUNCTION HERE
+   
     
     Final_image = annotate_image(image, edge_image , cells_tuple[0] , cells_tuple[1])
     
